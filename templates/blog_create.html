@@ -1,5 +1,5 @@
 <form method="POST">
-{% csrf_token %}
+{% csrf_token %}   <!--Siempre que hacemos un form tenemos que agregar este {% csrf_token %}-->
 title{{form.title}}
 <br>
 content{{form.content}}

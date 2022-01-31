@@ -7,11 +7,11 @@ from django.urls import reverse_lazy
 # Create your views here.
 class BlogListView(View):
     def get(self, request, *args, **kwargs):
-        posts = Post.objects.all()
+        posts = Post.objects.all()   # Traemos todos los Posts
         context={
             'posts':posts  
         }
-        return render(request, 'blog_list.html', context)
+        return render(request, 'blog_list.html', context)   # Retorna el request, en el html solicitado, con el context
 
 
 class BlogCreateViews(View):
@@ -26,12 +26,12 @@ class BlogCreateViews(View):
         if request.method=="POST":
             form = PostCreateForm(request.POST)
             if form.is_valid():
-                title = form.cleaned_data.get('title')
-                content = form.cleaned_data.get('content')
+                title = form.cleaned_data.get('title')   # Obtengo los datos que ingresaron en 'title'
+                content = form.cleaned_data.get('content')   # Obtengo los datos que ingresaron en 'content'
 
-                p, created = Post.objects.get_or_create(title=title, content=content)
+                p, created = Post.objects.get_or_create(title=title, content=content)   # p, viene de post. Con la info del form, crearemos un Post
                 p.save()
-                return redirect('blog:home')
+                return redirect('blog:home')   # Redirijo al home
 
         context={
             
@@ -53,6 +53,7 @@ class BlogUpdateView(UpdateView):
     fields=['title', 'content']
     template_name='blog_update.html'
 
+    # Vuelvo a blog_detail ya actualizado
     def get_success_url(self):
         pk = self.kwargs['pk']
         return reverse_lazy('blog:detail', kwargs={'pk':pk})

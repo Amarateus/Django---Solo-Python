@@ -3,7 +3,7 @@
 {% block content %}
 blog list
 <br>
-{%for post in posts%}
+{%for post in posts%}   <!--Solo aparecen estas opciones si existe algun post-->
 <a href="{% url 'blog:detail' post.id %}">{{post.title}}</a>
 <a href="{% url 'blog:update' post.id %}">Update</a>
 <a href="{% url 'blog:delete' post.id %}">Delete</a>
