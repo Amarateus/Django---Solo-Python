@@ -1,6 +1,6 @@
 from django.db import models
 
-# Los modelos nos permiten editar las informacion de manera dinamica: leer, borrar, actualizar, crear
+# Los modelos nos permiten editar la informacion de manera dinamica: leer, borrar, actualizar, crear
 # Los models son la informacion que se envia a la base de datos
 # Las migraciones son los cambios que hacemos en el archivo de models.py
 
