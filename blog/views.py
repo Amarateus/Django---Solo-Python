@@ -40,8 +40,8 @@ class BlogCreateViews(View):
 
 
 class BlogDetailView(View):
-    def get(self, request, pk, *args, **kwargs):
-        post = get_object_or_404(Post, pk=pk)
+    def get(self, request, pk, *args, **kwargs):   # Agrego el pk
+        post = get_object_or_404(Post, pk=pk)   # Llamo un post especifico
         context={
             'post':post
         }
