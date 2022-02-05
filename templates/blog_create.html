@@ -1,7 +1,7 @@
 <form method="POST">
 {% csrf_token %}   <!--Siempre que hacemos un form tenemos que agregar este {% csrf_token %}-->
-title{{form.title}}
-<br>
+title{{form.title}}   <!-- 'form' hace referencia al context que le pase a la vista de BlogCreateView -->
+<br>   <!-- break -->
 content{{form.content}}
 <button type="submit">Submit</button>
 </form>

@@ -16,20 +16,20 @@ class BlogListView(View):
 
 class BlogCreateViews(View):
     def get(self, request, *args, **kwargs):
-        form=PostCreateForm()
-        context={
-            'form':form
+        form = PostCreateForm()   # Traigo el PostCreateForm dentro de esta variable para poder agregarlo al context
+        context = {
+            'form':form   # Una vez agregado al context me aparecera en la vista en linea
         }
         return render(request, 'blog_create.html', context)
     
     def post(self, request, *args, **kwargs):
-        if request.method=="POST":
-            form = PostCreateForm(request.POST)
-            if form.is_valid():
+        if request.method=="POST":   # Hace referencia al <form> de blog_create con method="POST"
+            form = PostCreateForm(request.POST)   # 1ro traemos el PostCreateForm y le pasamos la inf dentro de POST
+            if form.is_valid():   # Si el form es valido...
                 title = form.cleaned_data.get('title')   # Obtengo los datos que ingresaron en 'title'
                 content = form.cleaned_data.get('content')   # Obtengo los datos que ingresaron en 'content'
 
-                p, created = Post.objects.get_or_create(title=title, content=content)   # p, viene de post. Con la info del form, crearemos un Post
+                p, created = Post.objects.get_or_create(title=title, content=content)   # p, viene de post. Con la info del form, crearemos un Post.   El title y content en rojo vienen del model Post, y los otros de esta funcion
                 p.save()
                 return redirect('blog:home')   # Redirijo al home
 
