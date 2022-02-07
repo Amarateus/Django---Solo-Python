@@ -4,7 +4,7 @@ from django.db import models
 # Los models son la informacion que se envia a la base de datos
 # Las migraciones son los cambios que hacemos en el archivo de models.py
 
-class Post(models.Model):
+class Post(models.Model):   # Cada Post que creemos a su vez tendra un ID al cual podremos acceder para buscar un Post especifico
     title=models.CharField(max_length=250)
     content=models.TextField()
 
